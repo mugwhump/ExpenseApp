@@ -7,12 +7,14 @@ import createRoutes from './routes';
 import * as types from './types';
 import configureStore from './store/configureStore';
 import fetchDataForRoute from './utils/fetchDataForRoute';
-import {filterByText, filterByDate, createExpenseRequest} from './actions/actions';
+import {filterByText, filterByDate, createExpense} from './actions/actions';
 //import * as types from './types/actionTypes';
 
 // Grab the state from a global injected into
 // server-generated HTML
 //const initialState = window.__INITIAL_STATE__;
+
+//-------- TESTING ------------
 const initialState = {
     filterList: {
         filter: {
@@ -21,7 +23,7 @@ const initialState = {
         },
         expenseList: {
             expenses: [{
-                date: 'tuday',
+                date: Date.now(),
                 description: 'I spent too much on advacados',
                 amount: 39.52 }
             ]
@@ -33,11 +35,11 @@ const store = configureStore(initialState, browserHistory);
 // Every time the state changes, log it
 // Note that subscribe() returns a function for unregistering the listener
 let unsubscribe = store.subscribe(() =>
-  console.log(store.getState())
+    console.log(store.getState())
 )
 store.dispatch(filterByText('banana'));
 store.dispatch(filterByDate('DATEFILTERWEEK'));
-store.dispatch(createExpenseRequest('tommorah', 'buyin too many eggs', 500.97));
+store.dispatch(createExpense('buyin too many eggs', 500.97));
 unsubscribe();
 
 const history = syncHistoryWithStore(browserHistory, store);

@@ -21,7 +21,7 @@ const filter = (state={}, action) => {
 
 const expenses = (state=[], action) => {
     switch (action.type) {
-        case types.CREATE_EXPENSE_REQUEST:
+        case types.CREATE_EXPENSE_SUCCESS:
             return [...state, {
                 date: action.date, 
                 description: action.description, 
@@ -32,8 +32,22 @@ const expenses = (state=[], action) => {
     }
 }
 
-//TODO: add expenseList reducer that handles requests, maybe as parent of expenses?
+const expenseList = (state={}, action) => {
+    switch (action.type) {
+        case types.CREATE_EXPENSE_REQUEST:
+            //TODO: indicate that a request is underway
+            return state;
+        case types.CREATE_EXPENSE_SUCCESS:
+            return expenses(state.expenses, action);
+        case types.CREATE_EXPENSE_FAILURE:
+            //TODO: indicate that request has failed
+            return state;
+        default:
+            return state;
+    }
+}
+
             
-const filterListReducer = combineReducers({filter, expenses});
+const filterListReducer = combineReducers({filter, expenseList});
 
 export default filterListReducer;
