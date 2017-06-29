@@ -28,7 +28,7 @@ const expenses = (state=[], action) => {
             return [...state, {
                 date: action.date, 
                 description: action.description, 
-                action: action.amount
+                amount: action.amount
             }];
         default:
             return state;

@@ -21,6 +21,7 @@ class FilterList extends Component {
         const { filterList, filterByText, filterByDate } = this.props;
         return (
             <div className='filter-list'>
+                <label>Search</label><br/>
                 <TextFilter onEntrySave={filterByText} />
                 <DateFilter filterByDate={filterByDate} />
                 <ExpenseList filter={filterList.filter}

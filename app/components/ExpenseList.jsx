@@ -26,11 +26,16 @@ const ExpenseList = ({ filter, expenses }) => {
     }
     const fullyFiltered = filterByDate(filteredByText, filter.dateFilter);
 
+    // Sort by date
+    fullyFiltered.sort((a,b) =>
+        a.date < b.date
+    );
+
     const expenseOutput = fullyFiltered.map((expense, key) => {
         return (
             <li key={key}>
                 <div>
-                    <span>{expense.date}</span>
+                    <span>{new Date(expense.date).toISOString().slice(0, 10)}</span>
                     <span>  ${expense.amount}</span>
                 </div>
                 <div> {expense.description} </div>
