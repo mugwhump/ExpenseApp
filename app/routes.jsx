@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 import { fetchExpenseData } from './fetch-data';
-import { App, ExpenseApp, Vote, Dashboard, About, LoginOrRegister } from './pages';
+import { App, ExpenseApp, } from './pages';
 
 /*
  * @param {Redux Store}
@@ -9,32 +9,29 @@ import { App, ExpenseApp, Vote, Dashboard, About, LoginOrRegister } from './page
  * state from the store after it has been authenticated.
  */
 export default (store) => {
-  const requireAuth = (nextState, replace, callback) => {
-    const { user: { authenticated }} = store.getState();
-    if (!authenticated) {
-      replace({
-        pathname: '/login',
-        state: { nextPathname: nextState.location.pathname }
-      });
-    }
-    callback();
-  };
+  //const requireAuth = (nextState, replace, callback) => {
+    //const { user: { authenticated }} = store.getState();
+    //if (!authenticated) {
+      //replace({
+        //pathname: '/login',
+        //state: { nextPathname: nextState.location.pathname }
+      //});
+    //}
+    //callback();
+  //};
 
-  const redirectAuth = (nextState, replace, callback) => {
-    const { user: { authenticated }} = store.getState();
-    if (authenticated) {
-      replace({
-        pathname: '/'
-      });
-    }
-    callback();
-  };
+  //const redirectAuth = (nextState, replace, callback) => {
+    //const { user: { authenticated }} = store.getState();
+    //if (authenticated) {
+      //replace({
+        //pathname: '/'
+      //});
+    //}
+    //callback();
+  //};
   return (
     <Route path="/" component={App}>
       <IndexRoute component={ExpenseApp} fetchData={fetchExpenseData} />
-      <Route path="login" component={LoginOrRegister} onEnter={redirectAuth} />
-      <Route path="dashboard" component={Dashboard} onEnter={requireAuth} />
-      <Route path="about" component={About} />
     </Route>
   );
 };
