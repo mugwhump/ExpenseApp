@@ -2,7 +2,7 @@ import * as types from '../types/actionTypes';
 import { combineReducers } from 'redux';
 
 
-const filter = (state={}, action) => {
+const filter = (state={textFilter:"", dateFilter:types.DATEFILTERALL}, action) => {
     switch(action.type) {
         case types.UPDATETEXTFILTER:
             return {
@@ -21,6 +21,9 @@ const filter = (state={}, action) => {
 
 const expenses = (state=[], action) => {
     switch (action.type) {
+        case types.REQUEST_SUCCESS:
+            if (action.data) return action.data;
+            return state;
         case types.CREATE_EXPENSE_SUCCESS:
             return [...state, {
                 date: action.date, 
@@ -34,11 +37,13 @@ const expenses = (state=[], action) => {
 
 const expenseList = (state={}, action) => {
     switch (action.type) {
+        case types.REQUEST_SUCCESS:
+            return {expenses: expenses(state.expenses, action)};
         case types.CREATE_EXPENSE_REQUEST:
             //TODO: indicate that a request is underway
             return state;
         case types.CREATE_EXPENSE_SUCCESS:
-            return expenses(state.expenses, action);
+            return {expenses: expenses(state.expenses, action)};
         case types.CREATE_EXPENSE_FAILURE:
             //TODO: indicate that request has failed
             return state;

@@ -10,7 +10,7 @@ const isFetching = (state = false, action) => {
     switch (action.type) {
         case types.CREATE_REQUEST:
             return true;
-        case types.REQUEST_SUCCESS:
+        //case types.REQUEST_SUCCESS:
         case types.REQUEST_FAILURE:
             return false;
         default:
@@ -21,10 +21,7 @@ const isFetching = (state = false, action) => {
 // Combine reducers with routeReducer which keeps track of
 // router state
 const rootReducer = combineReducers({
-    isFetching,
-    //topic,
-    //user,
-    //message,
+    user,
     filterList,
     routing
 });

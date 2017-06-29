@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames/bind';
 import styles from 'css/components/about';
+import FilterList from './FilterList';
 
 const cx = classNames.bind(styles);
 
@@ -16,6 +17,7 @@ const ExpenseApp = () => {
           Add expenses, view expenses... what CAN'T this app do??
         </p>
       </div>
+      <FilterList />
     </div>
   );
 };
