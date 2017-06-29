@@ -37,9 +37,9 @@ const store = configureStore(initialState, browserHistory);
 let unsubscribe = store.subscribe(() =>
     console.log(store.getState())
 )
-store.dispatch(filterByText('banana'));
+store.dispatch(filterByText(''));
 store.dispatch(filterByDate('DATEFILTERWEEK'));
-store.dispatch(createExpense('buyin too many eggs', 500.97));
+store.dispatch(createExpense('bUy soEMTHaag THAT  s not eggies :)DDD', 50.97));
 unsubscribe();
 
 const history = syncHistoryWithStore(browserHistory, store);
@@ -55,10 +55,11 @@ function onUpdate() {
     // We set it to null so that every subsequent client-side navigation will
     // still trigger a fetch data.
     // Read more: https://github.com/choonkending/react-webpack-node/pull/203#discussion_r60839356
-    if (window.__INITIAL_STATE__ !== null) {
-        window.__INITIAL_STATE__ = null;
-        return;
-    }
+    // TODO: fix this up to enable SSR
+    //if (window.__INITIAL_STATE__ !== null) {
+        //window.__INITIAL_STATE__ = null;
+        //return;
+    //}
 
     store.dispatch({ type: types.CREATE_REQUEST });
     fetchDataForRoute(this.state)

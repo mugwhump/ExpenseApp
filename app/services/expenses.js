@@ -7,10 +7,10 @@ import createRestApiClient from '../utils/createRestApiClient';
 export default () => {
     const client = createRestApiClient().withConfig({ baseURL: apiEndpoint });
     return {
-        //getExpenses: () => client.request({
-            //method: 'GET',
-            //url: '/expense'
-        //}),
+        getExpenses: () => client.request({
+            method: 'GET',
+            url: '/expense'
+        }),
         createExpense: ({ data }) => client.request({
             method: 'POST',
             url: '/expense/add',

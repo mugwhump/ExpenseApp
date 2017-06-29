@@ -54,7 +54,6 @@ export function createExpense(description, amount, date=Date.now()) {
         // First dispatch an update to inform user that a request is underway
         dispatch(createExpenseRequest());
 
-        console.log("The date is: " + data.date);
         return expenseService().createExpense({ data })
             .then((res) => {
                 if (res.status === 200) {

@@ -3,10 +3,23 @@ import Expense from '../models/expenses';
 
 
 /**
+ * List Expenses
+ */
+export function all(req, res) {
+  Expense.find({}).exec((err, expenses) => {
+    if (err) {
+      console.log('Error in first query');
+      return res.status(500).send('Something went wrong getting the data');
+    }
+
+    return res.json(expenses);
+  });
+}
+
+/**
  * Add an Expense
  */
 export function add(req, res) {
-  console.log("Requesta: " + JSON.stringify(req.body));
   Expense.create(req.body, (err) => {
     if (err) {
       console.log(err);
@@ -19,6 +32,6 @@ export function add(req, res) {
 
 
 export default {
-  //all,
+  all,
   add
 };
