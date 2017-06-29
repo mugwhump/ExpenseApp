@@ -15,12 +15,12 @@ class ExpenseApp extends Component {
   }
 
   pageTitle = () => {
-    return 'About | reactGo';
+    return 'Expense tracking app';
   };
 
   pageMeta = () => {
     return [
-      { name: 'description', content: 'A reactGo example of life' }
+      { name: 'description', content: 'An app for managing expenses' }
     ];
   };
 

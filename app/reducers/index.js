@@ -4,27 +4,29 @@ import user from '../reducers/user';
 import topic from '../reducers/topic';
 import message from '../reducers/message';
 import * as types from '../types';
+import filterList from '../reducers/filterList';
 
 const isFetching = (state = false, action) => {
-  switch (action.type) {
-    case types.CREATE_REQUEST:
-      return true;
-    case types.REQUEST_SUCCESS:
-    case types.REQUEST_FAILURE:
-      return false;
-    default:
-      return state;
-  }
+    switch (action.type) {
+        case types.CREATE_REQUEST:
+            return true;
+        case types.REQUEST_SUCCESS:
+        case types.REQUEST_FAILURE:
+            return false;
+        default:
+            return state;
+    }
 };
 
 // Combine reducers with routeReducer which keeps track of
 // router state
 const rootReducer = combineReducers({
-  isFetching,
-  topic,
-  user,
-  message,
-  routing
+    isFetching,
+    //topic,
+    //user,
+    //message,
+    filterList,
+    routing
 });
 
 export default rootReducer;
