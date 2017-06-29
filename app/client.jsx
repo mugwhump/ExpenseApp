@@ -12,35 +12,35 @@ import {filterByText, filterByDate, createExpense} from './actions/actions';
 
 // Grab the state from a global injected into
 // server-generated HTML
-//const initialState = window.__INITIAL_STATE__;
+const initialState = window.__INITIAL_STATE__;
 
 //-------- TESTING ------------
-const initialState = {
-    filterList: {
-        filter: {
-            textFilter: 'some text',
-            dateFilter: 'DATEFILTERALL'
-        },
-        expenseList: {
-            expenses: [{
-                date: Date.now(),
-                description: 'I spent too much on advacados',
-                amount: 39.52 }
-            ]
-        }
-    }
-};
+//const initialState = {
+    //filterList: {
+        //filter: {
+            //textFilter: 'some text',
+            //dateFilter: 'DATEFILTERALL'
+        //},
+        //expenseList: {
+            //expenses: [{
+                //date: Date.now(),
+                //description: 'I spent too much on advacados',
+                //amount: 39.52 }
+            //]
+        //}
+    //}
+//};
 
 const store = configureStore(initialState, browserHistory);
 // Every time the state changes, log it
 // Note that subscribe() returns a function for unregistering the listener
-let unsubscribe = store.subscribe(() =>
-    console.log(store.getState())
-)
-store.dispatch(filterByText(''));
-store.dispatch(filterByDate('DATEFILTERWEEK'));
-store.dispatch(createExpense('bUy soEMTHaag THAT  s not eggies :)DDD', 50.97));
-unsubscribe();
+//let unsubscribe = store.subscribe(() =>
+    //console.log(store.getState())
+//)
+//store.dispatch(filterByText(''));
+//store.dispatch(filterByDate('DATEFILTERWEEK'));
+//store.dispatch(createExpense('bUy soEMTHaag THAT  s not eggies :)DDD', 50.97));
+//unsubscribe();
 
 const history = syncHistoryWithStore(browserHistory, store);
 const routes = createRoutes(store);

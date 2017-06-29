@@ -21,7 +21,7 @@ const isFetching = (state = false, action) => {
 // Combine reducers with routeReducer which keeps track of
 // router state
 const rootReducer = combineReducers({
-    user,
+    //user,
     filterList,
     routing
 });
